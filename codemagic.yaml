@@ -4,16 +4,7 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
-      groups:
-        - ios-signing
     scripts:
-      - name: Set up keychain
-        script: |
-          keychain initialize
-          keychain add-certificates
-      - name: Set up provisioning profiles
-        script: |
-          provisioning profiles setup
       - name: Get Flutter packages
         script: |
           cd .
@@ -21,7 +12,7 @@ workflows:
       - name: Build iOS IPA
         script: |
           cd .
-          flutter build ios --release --export-method ad-hoc --export-options-plist=ios/exportOptions.plist
+          flutter build ios --release --no-codesign
     artifacts:
       - build/ios/iphoneos/*.app
       - build/ios/iphoneos/*.ipa
