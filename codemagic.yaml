@@ -9,11 +9,13 @@ workflows:
         script: |
           ls -la
           pwd
+          find . -name "pubspec.yaml" -type f
           flutter pub get
       - name: Build iOS IPA
         script: |
           ls -la
           pwd
+          find . -name "pubspec.yaml" -type f
           flutter build ios --release --no-codesign
     artifacts:
       - build/ios/iphoneos/*.app
