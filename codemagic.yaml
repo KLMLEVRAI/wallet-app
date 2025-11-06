@@ -6,9 +6,15 @@ workflows:
       xcode: latest
     scripts:
       - name: Get Flutter packages
-        script: flutter pub get
+        script: |
+          ls -la
+          pwd
+          flutter pub get
       - name: Build iOS IPA
-        script: flutter build ios --release --no-codesign
+        script: |
+          ls -la
+          pwd
+          flutter build ios --release --no-codesign
     artifacts:
       - build/ios/iphoneos/*.app
       - build/ios/iphoneos/*.ipa
